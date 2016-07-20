@@ -1,0 +1,15 @@
+gerrit_push_command() {
+
+gerrit_path="ssh://user@domain.com:29418"
+git_project_name=`git remote -v | grep push | gawk '{ print $2 }' | gawk -F"29418" '{ print $2}'
+`
+push_command="git push $gerrit_path$git_project_name HEAD:refs/for/projectname"
+echo $push_command
+}
+
+function pull_master() {
+git fetch origin refs/heads/master:mymaster
+
+
+}
+
